@@ -106,7 +106,7 @@ def createWindow():
             messagebox.showerror("Ошибка", "Сообщение для шифрования не может быть пустым.")
             return
 
-        encrypted_message = rc5_instance.encryptFile(message)
+        encrypted_message = rc5_instance.encryptString(message)
         input_encryptMessage.delete("1.0", "end")
         input_encryptMessage.insert("1.0", encrypted_message)
         messagebox.showinfo("Успех", "Сообщение успешно зашифровано!")
@@ -130,9 +130,9 @@ def createWindow():
             messagebox.showerror("Ошибка", "Не удается расшифровать сообщение. На этапе шифрования произошла ошибка")
             return
 
-        decrypted_message = rc5_instance.decryptFile(encrypted_message)
+        decrypted_message = rc5_instance.decryptStringData(encrypted_message)
         input_decryptMessage.delete("1.0", "end")
-        input_decryptMessage.insert("1.0", decrypted_message.decode("utf-8"))
+        input_decryptMessage.insert("1.0", decrypted_message)
         messagebox.showinfo("Успех", "Сообщение успешно расшифровано!")
 
     btn_decryptMessage = ttk.Button(frame, text="Расшифровать сообщение", command=on_decrypt_message)
